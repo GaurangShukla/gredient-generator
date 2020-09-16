@@ -1,14 +1,14 @@
 ﻿# gredient-generator
 1- I've increased the use of "let" insted of "var" which increases the scope of treating variables in every scope possible.
 
-let body = document.querySelector('body');
-let colorPickers = document.querySelectorAll('.color-picker');
-let colorPicker1 = document.querySelector('.color-picker__container1').firstElementChild;
-let colorPicker2 = document.querySelector('.color-picker__container2').firstElementChild;
-let anglePicker = document.querySelector('.js-angle');
-let gradientCode = document.querySelectorAll('.js-gradient-code');
-let rgbCode = document.querySelectorAll('.js-rgb-code');
-let backgroundCopy = document.querySelector('.js-background-copy');
+* let body = document.querySelector('body');
+* let colorPickers = document.querySelectorAll('.color-picker');
+* let colorPicker1 = document.querySelector('.color-picker__container1').firstElementChild;
+* let colorPicker2 = document.querySelector('.color-picker__container2').firstElementChild;
+* let anglePicker = document.querySelector('.js-angle');
+* let gradientCode = document.querySelectorAll('.js-gradient-code');
+* let rgbCode = document.querySelectorAll('.js-rgb-code');
+* let backgroundCopy = document.querySelector('.js-background-copy');
 
 
 2- var fixes the scope and bounds the variables
