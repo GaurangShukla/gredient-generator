@@ -1,0 +1,438 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Work+Sans:400,600&display=swap');
+
+* { box-sizing: border-box}
+
+html {
+  font-size: 62.5%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100%;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  color: rgba(0,0,0,.6);
+  text-align: center;
+  letter-spacing: 1rem;
+  /* default gradient */
+  background: linear-gradient(90deg , #dd06a0, #19a6c3); /* Standard syntax */
+}
+
+h1 {
+  padding: 10rem 0;
+  margin: 0;
+  font: 3.4rem 'Raleway', sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1rem;
+  width: 100%;
+}
+
+.color-picker__section, .angle-picker__section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15rem;
+}
+
+/* to align the color picker & angle at the center while keeping info on the left */
+/* after width = info width */
+.color-picker__section::after, .angle-picker__section::before, .random-gradient__section::after {
+  content: "";
+  height: 15rem;
+  width: 20%;
+}
+
+.info__container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-items: flex-end;
+  height: 100%;
+  width: 20%;
+  transform: translateX(-3rem);
+  transition: all .5s ease;
+  opacity: 0;
+}
+
+.info__container--reverse {
+  align-items: flex-start;
+  transform: translateX(6rem);
+}
+
+.info__text {
+  user-select: none;
+  font-family: 'Indie Flower', cursive;
+  font-size: 1.5rem;
+  letter-spacing: 0.3rem;
+  color: aliceblue;
+  margin-bottom: 1rem;
+}
+
+.arrow {
+  height: 4rem;
+  width: 5rem;
+}
+
+.right-drawn-arrow {
+  align-self: flex-end;
+}
+
+.left-drawn-arrow {
+  transform: scaleX(-1);
+  align-self: flex-start;
+}
+
+.color-pickers__options, .angle-picker__options {
+  height: 100%;
+  min-width: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.color-picker__container {
+  display: inline-block;
+  height: 5rem;
+  width: 5rem;
+  border: 3px solid #22264C;
+  border-radius: 50%;
+  margin: 0 2rem;
+  transition: transform .5s ease;
+}
+
+.color-picker__container:hover {
+  transform: scale(1.2);
+  border-color: #C4C5CF;
+}
+
+/* default background for circle button (color picker) */
+.color-picker__container1{
+  background: #DD06A0;
+  transform: translateX(2rem);
+  opacity: 0;
+}
+
+.color-picker__container2{
+  background: #19A6C3;
+  transform: translateX(-2rem);
+  opacity: 0;
+}
+
+/* hide default chrome color picker style */
+.color-picker {
+  opacity: 0;
+  height: 100%;
+}
+
+.color-picker:hover {
+  cursor: pointer;
+}
+
+.angle-picker__circle {
+  transform: translateX(-2rem);
+  opacity: 0;
+  transition: all .5s ease;
+  width: 4.3rem;
+  height: 4.3rem;
+  border-radius: 50%;
+  background: #161A42;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.angle-picker__circle:hover {
+  cursor: pointer;
+}
+
+.angle-picker__rectangle {
+  transform-origin: center;
+  transition: all .5s ease;
+  width: 100%;
+  height: .7rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  /* Make sure we don't fire click event on rectangle (we want coord of circle) */
+  pointer-events: none;
+}
+
+.angle-picker__dot {
+  background: #C4C5CF;
+  width: .7rem;
+  height: .7rem;
+  border-radius: 50%;
+  margin-right: .5rem;
+  /* Make sure we don't fire click event on rectangle (we want coord of circle) */
+  pointer-events: none;
+}
+
+.input-angle__container {
+  position: relative;
+  transform: translateX(2rem);
+  opacity: 0;
+  transition: all .5s ease;
+  margin-left: 1rem;
+}
+
+.angle-picker__input {
+  font-family: "Work Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #C4C5CF;
+  background: #161A42;
+  width: 8rem;
+  height: 4.2rem;
+  padding: 0 .8rem;
+  border-radius: .9rem;
+  margin-left: 1.2rem;
+  text-align: center;
+  outline: none;
+  border: 1px solid #1F2667;
+  transition: all 175ms ease-out;
+}
+
+.angle-picker__input:focus {
+  border: 3px solid #C4C5CF;
+}
+
+.angle-degree {
+  font-size: 3rem;
+  letter-spacing: 0;
+  position: absolute;
+  top: .4rem;
+  right: 1rem;
+  color: #C4C5CF;
+  user-select: none;
+}
+
+h2 {
+  margin: 3rem 0;
+  font: 2rem 'Raleway', sans-serif;
+  letter-spacing: .5rem;
+}
+
+.code-editor {
+  letter-spacing: initial;
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  grid-template-rows: 4fr 1fr;
+  width: 100%;
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
+.code-editor__column {
+  font-size: 1.2rem;
+  background: #22264C;
+  grid-area: 1/1/2/2;
+  display: flex;
+  flex-flow: column;
+  border-top-left-radius: 4px;
+}
+
+.code-editor__column-tabs{
+  height: 4.8rem;
+}
+
+.code-editor__column-numbers {
+  text-align: center;
+  padding: 1.7rem 0;
+  flex-grow: 1;
+}
+
+.code-editor__column-number {
+  font-family: monospace !important;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.4rem;
+  color: #595C79;
+  display: block;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.code-editor__block {
+  background: #161A42;
+  grid-area: 1/2/2/2;
+  border-top-right-radius: 4px;
+  display: flex;
+  flex-flow: column;
+}
+
+.code-editor__tabs {
+  height: 4.8rem;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.code-editor__tab {
+  font-family: "Work Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  border-top-left-radius: 4px;
+  font-size: 1.4rem;
+  line-height: 4.8rem;
+  letter-spacing: .2rem;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 0 2.4rem;
+  background: #22264C;
+}
+
+.code-editor__tab:hover {
+  cursor: pointer;
+}
+
+.code-editor__tab.is-active {
+  background: #161A42;
+}
+
+.code-editor__compat {
+  background: #0B0D21;
+  width: 100%;
+}
+
+.code-editor__input {
+  font-size: 2rem;
+  color: #C4C5CF;
+  text-align: left;
+  padding: 1.25rem 2.4rem;
+}
+
+.gradient-code, .rgb-code {
+  line-height: 2.4rem;
+  display: none;
+}
+
+.blue {
+  color: #00D4F0;
+}
+
+.code-options {
+  background: #45496D;
+  height: 5.6rem;
+  width: 100%;
+  grid-area: 2/1/2/3;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.code-option__button {
+  font-family: "Work Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  position: relative;
+  z-index: 9999;
+  font-weight: 600;
+  line-height: 5.6rem;
+  width: 100%;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: rgba(255,255,255,0.8);
+  transition: all 175ms ease-out;
+  overflow: hidden;
+}
+
+.code-option__button:hover {
+  cursor: pointer;
+}
+
+.code-option__button:hover .code-option__button-bg {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  z-index: 1;
+}
+
+.code-option__button-bg {
+  z-index: -9999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  -webkit-transition: all 150ms ease-in-out;
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+  transition: transform 150ms ease-in-out;
+}
+
+.code-option__button-svg {
+  z-index: 100;
+  position: relative;
+  top: 3px;
+  margin-right: 5px;
+  opacity: 0.6;
+}
+
+.code-options__button-text {
+  z-index: 100;
+  position: relative;
+}
+
+.random-gradient__section {
+  width: 100%;
+  max-height: 10rem;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10rem;
+}
+
+.random-gradient__button {
+  padding-left: 1rem;
+  letter-spacing: .3rem;
+  font-size: 2rem;
+  text-decoration: underline;
+}
+
+.svg-random {
+  padding: 5rem;
+}
+
+.svg-random:hover {
+  cursor: pointer;
+}
+
+.circle-arrow {
+  margin-top: 1rem;
+  width: 4.3rem;
+  height: auto;
+  transition: all .5s ease;
+}
+
+.circle-arrow:hover {
+  transform: rotate(360deg);
+}
+
+.up-arrow {
+  transform: rotate(-30deg);
+}
+
+
+/* JS Class */
+
+.js-translate-done {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.info__container--showed {
+  opacity: 1;
+  transform: translateX(0) !important;
+}
+
+.js-code-active {
+  display: inline-block;
+}
