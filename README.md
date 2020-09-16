@@ -11,7 +11,7 @@
 * let backgroundCopy = document.querySelector('.js-background-copy');
 
 
-2- var fixes the scope and bounds the variables
+2- var fixes the scope and bounds the variables.
  
 3- const fixes the value and limits the sope of function.
 
